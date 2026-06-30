@@ -28,7 +28,7 @@ const features = [
 	},
 	{
 		title: 'Extensible via plugins',
-		body: 'Emitters are pluggable. MusicXML and MEI ship in core; ABC, LilyPond, MIDI and more can be added without forking the compiler.',
+		body: 'Emitters are pluggable. MusicXML, MEI and MIDI ship in core; ABC, LilyPond, and more can be added without forking the compiler.',
 		icon: 'M12 4.5v15m7.5-7.5h-15',
 	},
 	{
@@ -42,7 +42,7 @@ const links = [
 	{
 		label: 'Install CLI',
 		href: 'https://www.npmjs.com/package/@clave/cli',
-		meta: 'npm install -g @clave/cli',
+		meta: 'npm i -g @clave-music/cli',
 		icon: 'terminal',
 	},
 	{
@@ -257,16 +257,16 @@ const highlightedCode = highlightClave(codeSample);
 						<div>
 							<p class="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-amber)]">Get started</p>
 							<h2 class="mt-5 max-w-2xl text-3xl font-bold tracking-tight text-[var(--color-fg)] sm:text-4xl">
-								Write scores in plain text. Let the tools engrave them.
+								Learn the syntax. Write the score.
 							</h2>
 							<p class="mt-4 max-w-2xl text-base leading-8 text-[var(--color-fg-2)]">
-								Learn the syntax, install the CLI, and compile to MusicXML or MEI — then
-								keep using the notation tools you already know.
+								The docs cover the full Clave syntax, CLI usage, and output formats.
+								Start there, then write your score in plain text.
 							</p>
 						</div>
 						<div class="flex flex-wrap gap-4 lg:justify-end">
-							<a href="https://www.npmjs.com/package/@clave/cli" class="inline-flex items-center justify-center rounded-full bg-[var(--color-amber)] px-6 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:-translate-y-0.5 hover:bg-[var(--color-amber-bright)]">
-								Install the CLI
+							<a href="/docs" class="inline-flex items-center justify-center rounded-full bg-[var(--color-amber)] px-6 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:-translate-y-0.5 hover:bg-[var(--color-amber-bright)]">
+								Open docs
 							</a>
 							<a href="https://github.com/clave-music" class="inline-flex items-center justify-center rounded-full border border-[var(--color-line-2)] px-6 py-3 text-sm font-semibold text-[var(--color-fg)] transition hover:-translate-y-0.5 hover:border-[var(--color-amber)]/60">
 								Explore GitHub
