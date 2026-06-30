@@ -34,3 +34,11 @@
 	background: rgba(245, 182, 46, 0.9);
 	color: #0a0a0b;
 }
+
+.expressive-code .frame.is-terminal > figcaption.header {
+	border-top-color: rgb(255 255 255 / 0.06);
+}
+
+.expressive-code .frame.is-terminal > figcaption.header::after {
+	border-bottom-color: var(--sl-color-hairline);
+}
