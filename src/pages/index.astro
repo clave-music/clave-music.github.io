@@ -1,6 +1,7 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import MusicPreview from '../components/MusicPreview.astro';
+import BrandMark from '../components/BrandMark.astro';
 
 const features = [
 	{
@@ -68,18 +69,16 @@ voice 1 {
 >
 	<main class="relative isolate overflow-hidden">
 		<div class="pointer-events-none absolute inset-0 -z-10">
-			<div class="absolute left-[-10rem] top-[-6rem] h-80 w-80 rounded-full bg-cyan-400/15 blur-3xl"></div>
-			<div class="absolute right-[-8rem] top-24 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl"></div>
+			<div class="absolute left-[-10rem] top-[-6rem] h-80 w-80 rounded-full bg-fuchsia-400/15 blur-3xl"></div>
+			<div class="absolute right-[-8rem] top-24 h-72 w-72 rounded-full bg-cyan-400/12 blur-3xl"></div>
+			<div class="absolute left-[45%] top-[16rem] h-72 w-72 rounded-full bg-amber-400/10 blur-3xl"></div>
 			<div class="absolute inset-x-0 top-[34rem] h-px bg-gradient-to-r from-transparent via-slate-400/30 to-transparent"></div>
 		</div>
 
 		<section class="mx-auto max-w-7xl px-6 pb-16 pt-8 sm:px-8 lg:px-10 lg:pb-24 lg:pt-10">
 			<header class="mb-16 flex items-center justify-between gap-4">
 				<a href="/" class="inline-flex items-center gap-3 text-lg font-semibold tracking-wide text-white">
-					<span class="grid h-10 w-10 place-items-center rounded-2xl border border-white/10 bg-white/5 text-sm shadow-lg shadow-cyan-950/30">
-						C
-					</span>
-					<span>Clave</span>
+					<BrandMark />
 				</a>
 				<nav class="hidden items-center gap-6 text-sm text-slate-300 md:flex">
 					<a class="transition hover:text-white" href="/docs/">Docs</a>
@@ -91,9 +90,11 @@ voice 1 {
 
 			<div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
 				<div class="max-w-2xl">
-					<p class="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
+					<BrandMark variant="hero" />
+					<div class="mt-6 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-gradient-to-r from-fuchsia-500/10 via-cyan-500/10 to-amber-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
+						<span class="h-2 w-2 rounded-full bg-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.8)]"></span>
 						plain-text music notation
-					</p>
+					</div>
 					<h1 class="mt-6 text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
 						Write music like code.
 						<span class="mt-2 block text-slate-300">Render it like notation.</span>
@@ -107,32 +108,32 @@ voice 1 {
 					<div class="mt-10 flex flex-wrap gap-4">
 						<a
 							href="/docs/"
-							class="inline-flex items-center justify-center rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5 hover:bg-cyan-300"
+							class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5"
 						>
 							Read the docs
 						</a>
 						<a
 							href="https://github.com/clave-music"
-							class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+							class="inline-flex items-center justify-center rounded-full border border-fuchsia-400/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
 						>
 							View GitHub
 						</a>
 					</div>
 
 					<div class="mt-12 grid gap-4 sm:grid-cols-3">
-						<div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+						<div class="rounded-3xl border border-cyan-400/15 bg-gradient-to-br from-cyan-400/10 to-sky-400/5 p-4">
 							<p class="text-sm font-semibold text-white">MusicXML</p>
 							<p class="mt-2 text-sm leading-6 text-slate-300">
 								Standard notation output for engraving software.
 							</p>
 						</div>
-						<div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+						<div class="rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/10 to-orange-400/5 p-4">
 							<p class="text-sm font-semibold text-white">MEI</p>
 							<p class="mt-2 text-sm leading-6 text-slate-300">
 								Archival and scholarly workflows when text matters.
 							</p>
 						</div>
-						<div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+						<div class="rounded-3xl border border-fuchsia-400/15 bg-gradient-to-br from-fuchsia-400/10 to-rose-400/5 p-4">
 							<p class="text-sm font-semibold text-white">Preview</p>
 							<p class="mt-2 text-sm leading-6 text-slate-300">
 								Render the score directly in the browser with OSMD.
@@ -147,7 +148,7 @@ voice 1 {
 							<p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
 								DSL example
 							</p>
-							<span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
+							<span class="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-100">
 								plain text
 							</span>
 						</div>
@@ -195,18 +196,18 @@ voice 1 {
 
 			<div class="mt-10 grid gap-5 lg:grid-cols-2">
 				{features.map((feature) => (
-					<article class="rounded-[1.75rem] border border-white/10 bg-slate-950/70 p-6 shadow-lg shadow-slate-950/20">
-						<h3 class="text-xl font-semibold text-white">{feature.title}</h3>
-						<p class="mt-3 max-w-xl text-base leading-7 text-slate-300">{feature.body}</p>
-					</article>
-				))}
+						<article class="rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/6 to-white/3 p-6 shadow-lg shadow-slate-950/20">
+							<h3 class="text-xl font-semibold text-white">{feature.title}</h3>
+							<p class="mt-3 max-w-xl text-base leading-7 text-slate-300">{feature.body}</p>
+						</article>
+					))}
 			</div>
 		</section>
 
 		<section class="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
-			<div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_100px_-60px_rgba(15,23,42,1)] sm:p-8">
-				<div class="max-w-3xl">
-					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200/70">
+					<div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_100px_-60px_rgba(15,23,42,1)] sm:p-8">
+						<div class="max-w-3xl">
+					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-200/75">
 						Install and tools
 					</p>
 					<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -214,15 +215,21 @@ voice 1 {
 					</h2>
 				</div>
 
-				<div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-					{links.map((link) => (
+					<div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+					{links.map((link, index) => (
 						<a
 							href={link.href}
-							class="group rounded-3xl border border-white/10 bg-slate-950/70 p-5 transition hover:-translate-y-0.5 hover:border-cyan-400/30 hover:bg-slate-900"
+							class:list={[
+								'group rounded-3xl border p-5 transition hover:-translate-y-0.5',
+								index === 0 && 'border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 to-slate-950/70 hover:border-cyan-300/40 hover:bg-slate-900',
+								index === 1 && 'border-fuchsia-400/20 bg-gradient-to-br from-fuchsia-400/10 to-slate-950/70 hover:border-fuchsia-300/40 hover:bg-slate-900',
+								index === 2 && 'border-amber-400/20 bg-gradient-to-br from-amber-400/10 to-slate-950/70 hover:border-amber-300/40 hover:bg-slate-900',
+								index === 3 && 'border-emerald-400/20 bg-gradient-to-br from-emerald-400/10 to-slate-950/70 hover:border-emerald-300/40 hover:bg-slate-900',
+							]}
 						>
 							<p class="text-lg font-semibold text-white">{link.label}</p>
 							<p class="mt-2 text-sm leading-6 text-slate-300">{link.meta}</p>
-							<p class="mt-4 text-sm font-mono text-cyan-200/80 transition group-hover:text-cyan-100">
+							<p class="mt-4 text-sm font-mono text-cyan-200/80 transition group-hover:text-white">
 								open link
 							</p>
 						</a>
