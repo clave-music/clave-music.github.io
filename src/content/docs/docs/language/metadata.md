@@ -30,7 +30,7 @@ the parser is no longer in header position.
 ## `time`
 
 Sets the time signature used for measure-length validation (see
-[Measures & Barlines](/language/measures-and-barlines/)). It is
+[Measures & Barlines](/docs/language/measures-and-barlines/)). It is
 **required**; omitting it is an error.
 
 ## `key`
@@ -53,7 +53,7 @@ validation error, so a typo doesn't silently produce a different valid key.
 
 The `key` value does **not** alter how pitches are read. This is permanent
 and deliberate: every pitch's accidental is always explicit and absolute
-(see [Pitches & Durations](/language/pitches-and-durations/)), so a bare
+(see [Pitches & Durations](/docs/language/pitches-and-durations/)), so a bare
 `F4` is always F natural regardless of `key:`, never an implicit F# because
 the key is G major. A consequence is that there is no natural sign in the
 grammar — it would have nothing to cancel, since accidentals never carry
@@ -66,7 +66,7 @@ Sets the score-wide initial tempo, in quarter notes per minute, e.g.
 `scoreDef[@midi.bpm="96"]`. Optional; when absent or unparseable (anything
 other than a positive integer), no tempo markup is emitted. A mid-piece
 tempo change uses the `@tempo:<bpm>` inline directive instead — see
-[Directives & Articulation](/language/directives-and-articulation/).
+[Directives & Articulation](/docs/language/directives-and-articulation/).
 
 The colon `:` appears only in metadata key/value lines; block structure
 (`staff`, `voice`) always uses braces, never a colon.

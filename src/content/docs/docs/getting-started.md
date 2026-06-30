@@ -35,5 +35,5 @@ derived from the input, or pass `-o <file>` to choose one explicitly).
 
 ## Next steps
 
-- Read the [language reference](/language/metadata/) for the full syntax.
-- Browse the [examples](/examples/) for worked scores covering every feature.
+- Read the [language reference](/docs/language/metadata/) for the full syntax.
+- Browse the [examples](/docs/examples/) for worked scores covering every feature.
