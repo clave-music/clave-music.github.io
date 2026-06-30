@@ -76,10 +76,11 @@ const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 	</noscript>
 
 	<script type="module" define:vars={{ musicXml }}>
+		import { OpenSheetMusicDisplay } from 'opensheetmusicdisplay';
+
 		const mount = document.querySelector('[data-osmd-preview]');
 
 		if (mount) {
-			const { OpenSheetMusicDisplay } = await import('opensheetmusicdisplay');
 			mount.replaceChildren();
 			const osmd = new OpenSheetMusicDisplay(mount, {
 				autoResize: true,

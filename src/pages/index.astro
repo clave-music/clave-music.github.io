@@ -1,38 +1,24 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import MusicPreview from '../components/MusicPreview.astro';
-
-const reasons = [
-	{
-		title: 'Readable source',
-		body: 'Clave keeps the notation close to what a musician can scan, edit, and review without XML noise getting in the way.',
-	},
-	{
-		title: 'Portable diffs',
-		body: 'Plain text makes score changes easy to review in version control and easier to keep stable over time.',
-	},
-	{
-		title: 'Standard outputs',
-		body: 'MusicXML and MEI stay in the pipeline so engraving and archival tools can do the heavy lifting downstream.',
-	},
-];
+import BrandMark from '../components/BrandMark.astro';
 
 const features = [
 	{
-		title: 'Notes, rhythms, and structure stay explicit',
-		body: 'The language is compact, but the source still maps cleanly to what a score does rather than how a renderer lays it out.',
+		title: 'Readable by design',
+		body: 'The syntax is intentionally compact so musicians can read and write scores without XML noise getting in the way.',
 	},
 	{
-		title: 'Multi-voice writing stays practical',
-		body: 'The syntax is designed for real scores, where more than one line of music needs to stay readable in a single file.',
+		title: 'Version-control friendly',
+		body: 'Small text changes produce meaningful diffs, making review and collaboration much easier than binary or verbose markup formats.',
 	},
 	{
-		title: 'It compiles to tooling-friendly formats',
-		body: 'MusicXML and MEI keep the output usable in notation software, scholarship workflows, and future integrations.',
+		title: 'Targets standard outputs',
+		body: 'Clave compiles to MusicXML and MEI so downstream engraving, archival, and notation tools can keep doing the heavy lifting.',
 	},
 	{
-		title: 'The ecosystem can grow around it',
-		body: 'Editor support, compiler tooling, and later plugins all benefit from the language staying text-first and predictable.',
+		title: 'Built for tooling',
+		body: 'The language and ecosystem are designed for editor support, validation, and future plugin-based extensions.',
 	},
 ];
 
@@ -59,6 +45,12 @@ const links = [
 	},
 ];
 
+const reasons = [
+	'You can edit music in the same workflow you already use for code review and release management.',
+	'Plain text keeps the source of truth portable across editors, CI, and future automation.',
+	'The language stays focused on musical content, while rendering and engraving remain separate concerns.',
+];
+
 const codeSample = String.raw`title: "Ode to Joy"
 composer: "Beethoven"
 time: 4/4
@@ -76,17 +68,17 @@ voice 1 {
 	description="Clave is a human-friendly DSL for writing music. Readable source, standard notation output, and a rendered preview powered by OSMD."
 >
 	<main class="relative isolate overflow-hidden">
-		<div class="pointer-events-none absolute inset-0 -z-10 bg-[#050816]"></div>
-		<div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_14%_15%,rgba(244,114,182,0.18),transparent_28%),radial-gradient(circle_at_84%_18%,rgba(34,211,238,0.16),transparent_26%),radial-gradient(circle_at_52%_0%,rgba(250,204,21,0.1),transparent_32%)]"></div>
-		<div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 border-b border-white/5 bg-white/[0.01]"></div>
+		<div class="pointer-events-none absolute inset-0 -z-10">
+			<div class="absolute left-[-10rem] top-[-6rem] h-80 w-80 rounded-full bg-fuchsia-400/15 blur-3xl"></div>
+			<div class="absolute right-[-8rem] top-24 h-72 w-72 rounded-full bg-cyan-400/12 blur-3xl"></div>
+			<div class="absolute left-[45%] top-[16rem] h-72 w-72 rounded-full bg-amber-400/10 blur-3xl"></div>
+			<div class="absolute inset-x-0 top-[34rem] h-px bg-gradient-to-r from-transparent via-slate-400/30 to-transparent"></div>
+		</div>
 
-		<section class="mx-auto max-w-7xl px-6 pb-16 pt-8 sm:px-8 lg:px-10 lg:pb-20 lg:pt-8">
-			<header class="flex items-center justify-between gap-4">
-				<a href="/" class="inline-flex items-baseline gap-3 text-white">
-					<span class="text-lg font-semibold uppercase tracking-[0.32em]">Clave</span>
-					<span class="hidden text-xs uppercase tracking-[0.32em] text-slate-500 md:inline">
-						plain-text music notation
-					</span>
+		<section class="mx-auto max-w-7xl px-6 pb-16 pt-8 sm:px-8 lg:px-10 lg:pb-24 lg:pt-10">
+			<header class="mb-16 flex items-center justify-between gap-4">
+				<a href="/" class="inline-flex items-center gap-3 text-lg font-semibold tracking-wide text-white">
+					<BrandMark />
 				</a>
 				<nav class="hidden items-center gap-6 text-sm text-slate-300 md:flex">
 					<a class="transition hover:text-white" href="/docs/">Docs</a>
@@ -96,155 +88,71 @@ voice 1 {
 				</nav>
 			</header>
 
-			<div class="mt-12 grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
-				<div class="order-2 max-w-2xl lg:order-1">
-					<p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-200">
-						<span class="h-2 w-2 rounded-full bg-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.9)]"></span>
+			<div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+				<div class="max-w-2xl">
+					<BrandMark variant="hero" />
+					<div class="mt-6 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/20 bg-gradient-to-r from-fuchsia-500/10 via-cyan-500/10 to-amber-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100">
+						<span class="h-2 w-2 rounded-full bg-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.8)]"></span>
 						plain-text music notation
-					</p>
+					</div>
 					<h1 class="mt-6 text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
 						Write music like code.
-						<span class="mt-3 block max-w-xl text-slate-300">Render it like notation.</span>
+						<span class="mt-2 block text-slate-300">Render it like notation.</span>
 					</h1>
 					<p class="mt-6 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl">
 						Clave is a human-friendly DSL for writing music that stays readable,
-						writable, and version-control friendly. The site should feel technical and
-						editorial, not over-designed.
+						writable, and version-control friendly. Source stays compact; rendering
+						and engraving stay in the tools built for them.
 					</p>
 
 					<div class="mt-10 flex flex-wrap gap-4">
 						<a
 							href="/docs/"
-							class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-100"
+							class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5"
 						>
 							Read the docs
 						</a>
 						<a
 							href="https://github.com/clave-music"
-							class="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+							class="inline-flex items-center justify-center rounded-full border border-fuchsia-400/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
 						>
 							View GitHub
 						</a>
 					</div>
 
-					<div class="mt-12 grid gap-5 border-l border-white/8 pl-5 sm:grid-cols-3 sm:border-l-0 sm:pl-0">
-						{reasons.map((item, index) => (
-							<div class="space-y-2">
-								<p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-									0{index + 1}
-								</p>
-								<p class="text-sm font-semibold text-white">{item.title}</p>
-								<p class="text-sm leading-6 text-slate-300">{item.body}</p>
-							</div>
-						))}
-					</div>
-				</div>
-
-				<figure class="order-1 lg:order-2">
-					<div class="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-950/85 p-4 shadow-[0_40px_140px_-55px_rgba(0,0,0,0.9)]">
-						<div class="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(244,114,182,0.16),transparent_24%),radial-gradient(circle_at_82%_16%,rgba(34,211,238,0.15),transparent_22%),radial-gradient(circle_at_54%_82%,rgba(250,204,21,0.08),transparent_28%)]"></div>
-						<div class="relative overflow-hidden rounded-[2rem] border border-white/8 bg-[#04070f]">
-							<img
-								src="/brand/friendly-clef.png"
-								alt="Friendly Clef mascot for Clave"
-								class="block h-auto w-full object-cover"
-							/>
+					<div class="mt-12 grid gap-4 sm:grid-cols-3">
+						<div class="rounded-3xl border border-cyan-400/15 bg-gradient-to-br from-cyan-400/10 to-sky-400/5 p-4">
+							<p class="text-sm font-semibold text-white">MusicXML</p>
+							<p class="mt-2 text-sm leading-6 text-slate-300">
+								Standard notation output for engraving software.
+							</p>
 						</div>
-						<div class="relative mt-4 flex items-center justify-between gap-4 px-1">
-							<div>
-								<p class="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
-									Friendly Clef
-								</p>
-								<p class="mt-1 text-sm text-slate-300">
-									A large hero mark with a clear music-language feel.
-								</p>
-							</div>
-							<a
-								href="/docs/"
-								class="hidden rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-200 transition hover:bg-white/10 sm:inline-flex"
-							>
-								Docs
-							</a>
+						<div class="rounded-3xl border border-amber-400/15 bg-gradient-to-br from-amber-400/10 to-orange-400/5 p-4">
+							<p class="text-sm font-semibold text-white">MEI</p>
+							<p class="mt-2 text-sm leading-6 text-slate-300">
+								Archival and scholarly workflows when text matters.
+							</p>
 						</div>
-					</div>
-				</figure>
-			</div>
-		</section>
-
-		<section class="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
-			<div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
-				<div class="max-w-xl">
-					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-						Why plain-text music notation
-					</p>
-					<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-						Notation should be easy to review, easy to revise, and hard to lose.
-					</h2>
-					<p class="mt-5 text-base leading-8 text-slate-300">
-						The language should describe the music, not the renderer. That keeps the
-						source readable, the workflow portable, and the output compatible with the
-						tools that already know how to engrave and archive scores.
-					</p>
-				</div>
-
-				<div class="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-					<div class="space-y-6">
-						{features.map((feature, index) => (
-							<div class:list={[
-								'grid gap-4 border-t border-white/8 pt-6 first:border-t-0 first:pt-0 sm:grid-cols-[5rem_1fr]',
-							]}>
-								<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-									0{index + 1}
-								</p>
-								<div>
-									<h3 class="text-lg font-semibold text-white">{feature.title}</h3>
-									<p class="mt-2 max-w-2xl text-sm leading-7 text-slate-300">
-										{feature.body}
-									</p>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
-			<div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-				<div class="max-w-xl">
-					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-						Syntax snapshot
-					</p>
-					<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-						See the source and the rendered output side by side.
-					</h2>
-					<p class="mt-5 text-base leading-8 text-slate-300">
-						One panel shows the DSL the user writes. The other panel shows the score as
-						it will appear in the browser. That makes the homepage feel like the product,
-						not just a brochure.
-					</p>
-					<div class="mt-8 rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-5">
-						<p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-							One rule
-						</p>
-						<p class="mt-3 text-sm leading-7 text-slate-300">
-							A number on a pitch letter is the octave. Duration always follows a slash.
-							The syntax stays unambiguous because the source stays compact.
-						</p>
+						<div class="rounded-3xl border border-fuchsia-400/15 bg-gradient-to-br from-fuchsia-400/10 to-rose-400/5 p-4">
+							<p class="text-sm font-semibold text-white">Preview</p>
+							<p class="mt-2 text-sm leading-6 text-slate-300">
+								Render the score directly in the browser with OSMD.
+							</p>
+						</div>
 					</div>
 				</div>
 
 				<div class="grid gap-5">
-					<div class="rounded-[2rem] border border-white/10 bg-slate-950/85 p-5 shadow-[0_30px_120px_-60px_rgba(0,0,0,0.9)]">
-						<div class="mb-4 flex items-center justify-between gap-4">
+					<div class="rounded-[2rem] border border-white/10 bg-slate-950/75 p-5 shadow-[0_30px_120px_-50px_rgba(15,23,42,1)] backdrop-blur">
+						<div class="mb-4 flex items-center justify-between">
 							<p class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
 								DSL example
 							</p>
-							<span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-200">
+							<span class="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-100">
 								plain text
 							</span>
 						</div>
-						<pre class="overflow-x-auto rounded-2xl border border-white/10 bg-[#050816] p-5 text-sm leading-7 text-slate-200 shadow-inner"><code>{codeSample}</code></pre>
+						<pre class="overflow-x-auto rounded-2xl border border-white/10 bg-slate-950 p-5 text-sm leading-7 text-slate-200 shadow-inner"><code>{codeSample}</code></pre>
 					</div>
 
 					<MusicPreview />
@@ -252,97 +160,109 @@ voice 1 {
 			</div>
 		</section>
 
-		<section class="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
-			<div class="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
-				<div class="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+		<section class="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
+			<div class="max-w-3xl">
+				<p class="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200/70">
+					Why plain-text music notation
+				</p>
+				<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					Notation should be easy to review, easy to revise, and hard to lose.
+				</h2>
+			</div>
+
+			<div class="mt-10 grid gap-5 md:grid-cols-3">
+				{reasons.map((reason) => (
+					<div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 text-slate-200 shadow-lg shadow-slate-950/20">
+						<p class="text-lg leading-8">{reason}</p>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
+			<div class="flex flex-wrap items-end justify-between gap-4">
+				<div class="max-w-3xl">
+					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200/70">
+						Features
+					</p>
+					<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						Focus on the source, not the serialization format.
+					</h2>
+				</div>
+				<a href="/docs/" class="text-sm font-semibold text-cyan-200 transition hover:text-cyan-100">
+					Browse docs
+				</a>
+			</div>
+
+			<div class="mt-10 grid gap-5 lg:grid-cols-2">
+				{features.map((feature) => (
+						<article class="rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/6 to-white/3 p-6 shadow-lg shadow-slate-950/20">
+							<h3 class="text-xl font-semibold text-white">{feature.title}</h3>
+							<p class="mt-3 max-w-xl text-base leading-7 text-slate-300">{feature.body}</p>
+						</article>
+					))}
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10">
+					<div class="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_25px_100px_-60px_rgba(15,23,42,1)] sm:p-8">
+						<div class="max-w-3xl">
+					<p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-200/75">
 						Install and tools
 					</p>
 					<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
 						Drop Clave into your workflow.
 					</h2>
-					<p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-						Start with the CLI, then move into editor support or the web editor if that
-						better matches how you work. The page should point to the next action without
-						scattering attention.
-					</p>
-
-					<div class="mt-8 grid gap-4 sm:grid-cols-2">
-						{links.map((link) => (
-							<a
-								href={link.href}
-								class="group rounded-3xl border border-white/10 bg-[#060816] p-5 transition hover:-translate-y-0.5 hover:bg-white/[0.06]"
-							>
-								<p class="text-lg font-semibold text-white">{link.label}</p>
-								<p class="mt-2 text-sm leading-6 text-slate-300">{link.meta}</p>
-								<p class="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 transition group-hover:text-slate-200">
-									open link
-								</p>
-							</a>
-						))}
-					</div>
 				</div>
 
-				<div class="flex flex-col justify-between gap-6 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
-					<div>
-						<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-							What it gives you
-						</p>
-						<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-							A text-first source of truth for music.
-						</h2>
-					</div>
-
-					<div class="space-y-5">
-						<div class="rounded-[1.5rem] border border-white/8 bg-[#050816] p-5">
-							<p class="text-sm font-semibold text-white">Readable</p>
-							<p class="mt-2 text-sm leading-7 text-slate-300">
-								Score sources are meant to be scanned and edited by humans first.
+					<div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+					{links.map((link, index) => (
+						<a
+							href={link.href}
+							class:list={[
+								'group rounded-3xl border p-5 transition hover:-translate-y-0.5',
+								index === 0 && 'border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 to-slate-950/70 hover:border-cyan-300/40 hover:bg-slate-900',
+								index === 1 && 'border-fuchsia-400/20 bg-gradient-to-br from-fuchsia-400/10 to-slate-950/70 hover:border-fuchsia-300/40 hover:bg-slate-900',
+								index === 2 && 'border-amber-400/20 bg-gradient-to-br from-amber-400/10 to-slate-950/70 hover:border-amber-300/40 hover:bg-slate-900',
+								index === 3 && 'border-emerald-400/20 bg-gradient-to-br from-emerald-400/10 to-slate-950/70 hover:border-emerald-300/40 hover:bg-slate-900',
+							]}
+						>
+							<p class="text-lg font-semibold text-white">{link.label}</p>
+							<p class="mt-2 text-sm leading-6 text-slate-300">{link.meta}</p>
+							<p class="mt-4 text-sm font-mono text-cyan-200/80 transition group-hover:text-white">
+								open link
 							</p>
-						</div>
-						<div class="rounded-[1.5rem] border border-white/8 bg-[#050816] p-5">
-							<p class="text-sm font-semibold text-white">Versionable</p>
-							<p class="mt-2 text-sm leading-7 text-slate-300">
-								Small changes stay obvious in diffs and easy to discuss in review.
-							</p>
-						</div>
-						<div class="rounded-[1.5rem] border border-white/8 bg-[#050816] p-5">
-							<p class="text-sm font-semibold text-white">Composable</p>
-							<p class="mt-2 text-sm leading-7 text-slate-300">
-								The tooling can grow around the language without bloating the source.
-							</p>
-						</div>
-					</div>
+						</a>
+					))}
 				</div>
 			</div>
 		</section>
 
-		<section class="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-10 pb-20">
-			<div class="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:p-10">
-				<div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-					<div class="max-w-2xl">
-						<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+		<section class="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10">
+			<div class="rounded-[2rem] border border-cyan-400/15 bg-gradient-to-r from-cyan-400/10 via-slate-950/80 to-emerald-400/10 p-8 shadow-[0_30px_120px_-60px_rgba(6,182,212,0.45)] sm:p-10">
+				<div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+					<div>
+						<p class="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200/70">
 							Get started
 						</p>
 						<h2 class="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
 							Use the docs to learn the syntax, then build scores in plain text.
 						</h2>
-						<p class="mt-5 text-base leading-8 text-slate-300">
-							The homepage introduces the workflow. The docs carry the language
+						<p class="mt-4 max-w-2xl text-base leading-8 text-slate-300">
+							The homepage introduces the workflow. The docs will carry the language
 							specification and reference material as they land.
 						</p>
 					</div>
-
 					<div class="flex flex-wrap gap-4 lg:justify-end">
 						<a
 							href="/docs/"
-							class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-100"
+							class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-50"
 						>
 							Open docs
 						</a>
 						<a
 							href="https://github.com/clave-music"
-							class="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+							class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
 						>
 							Explore GitHub
 						</a>
