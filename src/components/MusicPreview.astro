@@ -1,0 +1,95 @@
+---
+const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="4.0">
+  <work>
+    <work-title>Clave preview</work-title>
+  </work>
+  <identification>
+    <creator type="composer">Clave</creator>
+  </identification>
+  <part-list>
+    <score-part id="P1">
+      <part-name>Voice</part-name>
+    </score-part>
+  </part-list>
+  <part id="P1">
+    <measure number="1">
+      <attributes>
+        <divisions>1</divisions>
+        <key><fifths>0</fifths></key>
+        <time><beats>4</beats><beat-type>4</beat-type></time>
+        <clef><sign>G</sign><line>2</line></clef>
+      </attributes>
+      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>F</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>G</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+    </measure>
+    <measure number="2">
+      <note><pitch><step>G</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>F</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>D</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+    </measure>
+    <measure number="3">
+      <note><pitch><step>C</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>C</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>D</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+    </measure>
+    <measure number="4">
+      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>D</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
+      <note><pitch><step>D</step><octave>4</octave></pitch><duration>2</duration><type>half</type></note>
+    </measure>
+  </part>
+</score-partwise>`;
+---
+
+<section class="relative overflow-hidden rounded-[2rem] border border-sky-400/15 bg-slate-950/70 p-5 shadow-[0_25px_120px_-40px_rgba(15,23,42,0.9)] backdrop-blur">
+	<div class="mb-4 flex items-center justify-between gap-4">
+		<div>
+			<p class="text-xs font-semibold uppercase tracking-[0.3em] text-sky-200/70">
+				Rendered preview
+			</p>
+			<p class="mt-1 text-sm text-slate-300">Powered by OpenSheetMusicDisplay</p>
+		</div>
+		<div class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
+			live render
+		</div>
+	</div>
+
+	<div
+		data-osmd-preview
+		class="min-h-[250px] overflow-x-auto rounded-2xl border border-white/10 bg-white/95 p-3 text-slate-900 shadow-inner"
+	>
+		<div class="flex min-h-[250px] items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(248,250,252,0.95))] px-6 py-10 text-center text-sm text-slate-500">
+			Loading score preview...
+		</div>
+	</div>
+
+	<noscript>
+		<p class="mt-4 text-sm text-slate-400">
+			JavaScript is required to render the notation preview.
+		</p>
+	</noscript>
+
+	<script type="module" define:vars={{ musicXml }}>
+		const mount = document.querySelector('[data-osmd-preview]');
+
+		if (mount) {
+			const { OpenSheetMusicDisplay } = await import('opensheetmusicdisplay');
+			mount.replaceChildren();
+			const osmd = new OpenSheetMusicDisplay(mount, {
+				autoResize: true,
+				backend: 'svg',
+				drawTitle: true,
+			});
+
+			await osmd.load(musicXml);
+			osmd.Zoom = 0.95;
+			osmd.render();
+		}
+	</script>
+</section>
