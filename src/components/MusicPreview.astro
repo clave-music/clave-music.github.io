@@ -1,52 +1,3 @@
----
-const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
-<score-partwise version="4.0">
-  <work>
-    <work-title>Clave preview</work-title>
-  </work>
-  <identification>
-    <creator type="composer">Clave</creator>
-  </identification>
-  <part-list>
-    <score-part id="P1">
-      <part-name>Voice</part-name>
-    </score-part>
-  </part-list>
-  <part id="P1">
-    <measure number="1">
-      <attributes>
-        <divisions>1</divisions>
-        <key><fifths>0</fifths></key>
-        <time><beats>4</beats><beat-type>4</beat-type></time>
-        <clef><sign>G</sign><line>2</line></clef>
-      </attributes>
-      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>F</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>G</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-    </measure>
-    <measure number="2">
-      <note><pitch><step>G</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>F</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>D</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-    </measure>
-    <measure number="3">
-      <note><pitch><step>C</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>C</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>D</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-    </measure>
-    <measure number="4">
-      <note><pitch><step>E</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>D</step><octave>4</octave></pitch><duration>1</duration><type>quarter</type></note>
-      <note><pitch><step>D</step><octave>4</octave></pitch><duration>2</duration><type>half</type></note>
-    </measure>
-  </part>
-</score-partwise>`;
----
-
 <section class="rounded-2xl border border-[var(--color-line)] bg-[var(--color-panel)] p-5 shadow-[0_25px_80px_-50px_rgba(0,0,0,0.9)]">
 	<div class="mb-4 flex items-center justify-between gap-4">
 		<div>
@@ -62,7 +13,7 @@ const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 	<div
 		data-osmd-preview
-		class="min-h-[250px] overflow-x-auto rounded-xl border border-[var(--color-line)] bg-white p-3 text-slate-900 shadow-inner"
+		class="flex min-h-[250px] items-center justify-center rounded-xl border border-[var(--color-line)] bg-white p-3 text-slate-900 shadow-inner"
 	>
 		<div class="flex min-h-[250px] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 px-6 py-10 text-center text-sm text-slate-500">
 			Loading score preview...
@@ -75,12 +26,14 @@ const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 		</p>
 	</noscript>
 
-	<script type="module" define:vars={{ musicXml }}>
+	<script type="module">
 		import { OpenSheetMusicDisplay } from 'opensheetmusicdisplay';
 
 		const mount = document.querySelector('[data-osmd-preview]');
 
 		if (mount) {
+			const musicXml = await fetch('/scores/odetojoy.musicxml').then((res) => res.text());
+
 			mount.replaceChildren();
 			const osmd = new OpenSheetMusicDisplay(mount, {
 				autoResize: true,
@@ -89,7 +42,7 @@ const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 			});
 
 			await osmd.load(musicXml);
-			osmd.Zoom = 0.95;
+			osmd.Zoom = 0.7;
 			osmd.render();
 		}
 	</script>

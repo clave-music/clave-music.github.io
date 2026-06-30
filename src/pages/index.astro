@@ -1,4 +1,5 @@
 ---
+import { readFileSync } from 'node:fs';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import MusicPreview from '../components/MusicPreview.astro';
 import TerminalArt from '../components/TerminalArt.astro';
@@ -54,16 +55,45 @@ const links = [
 	},
 ];
 
-const codeSample = String.raw`title: "Ode to Joy"
-composer: "Beethoven"
-time: 4/4
-key: D major
-tempo: 120
+const codeSample = readFileSync(
+	`${process.cwd()}/public/scores/odetojoy.clave`,
+	'utf-8',
+).trim();
 
-voice 1 {
-  E4/4 E4 F4 G4 | G4 F4 E4 D4 |
-  C4 C4 D4 E4   | E4/4. D4/8 D4/2 |
-}`;
+const escapeHtml = (s: string) =>
+	s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// ponytail: line-based regex highlighter, not a real grammar — swap for Shiki if more DSL syntax needs covering
+const highlightClave = (source: string) =>
+	source
+		.split('\n')
+		.map((line) => {
+			const comment = line.match(/^(\s*)(\/\/.*)$/);
+			if (comment) {
+				return `${comment[1]}<span class="text-[var(--color-fg-3)] italic">${escapeHtml(comment[2])}</span>`;
+			}
+
+			const field = line.match(/^(\s*)(title|composer|time|key|tempo)(:)(.*)$/);
+			if (field) {
+				const [, indent, name, colon, rest] = field;
+				return `${indent}<span class="text-[var(--color-amber)]">${name}</span><span class="text-[var(--color-fg-3)]">${colon}</span><span class="text-[var(--color-fg)]">${escapeHtml(rest)}</span>`;
+			}
+
+			return line.replace(
+				/\b(voice)\b|([{}|\]])|\b([A-G](?:#|b)?\d)(\/\d+\.?)?/g,
+				(match, keyword, punct, note, duration) => {
+					if (keyword) return `<span class="text-[var(--color-amber)]">${keyword}</span>`;
+					if (punct) return `<span class="text-[var(--color-fg-3)]">${escapeHtml(punct)}</span>`;
+					const durationHtml = duration
+						? `<span class="text-violet-300">${duration}</span>`
+						: '';
+					return `<span class="text-sky-300">${note}</span>${durationHtml}`;
+				},
+			);
+		})
+		.join('\n');
+
+const highlightedCode = highlightClave(codeSample);
 ---
 
 <HomeLayout>
@@ -91,7 +121,7 @@ voice 1 {
 					</h1>
 					<p class="mt-7 max-w-xl text-lg leading-8 text-[var(--color-fg-2)]">
 						Clave is a human-friendly DSL for writing music. It describes the
-						<span class="text-[var(--color-amber)]">musical content</span> — notes, rhythms,
+						<span class="text-[var(--color-amber)]"> musical content</span> — notes, rhythms,
 						voices — and leaves engraving, spacing, and layout to the tools built for them.
 					</p>
 
@@ -112,7 +142,7 @@ voice 1 {
 			<section id="philosophy" class="mt-32 max-w-4xl">
 				<p class="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-amber)]">Philosophy</p>
 				<h2 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-[var(--color-fg)] sm:text-4xl">
-					Clave describes music, not engraving — the rest is someone else's problem.
+					Clave describes music, not engraving
 				</h2>
 				<p class="mt-6 text-lg leading-8 text-[var(--color-fg-2)]">
 					Traditional notation files are XML: verbose, hard to write by hand, painful to
@@ -130,7 +160,7 @@ voice 1 {
 						<p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-fg-3)]">DSL example</p>
 						<span class="rounded-full border border-[var(--color-line-2)] px-3 py-1 text-xs text-[var(--color-fg-2)]">plain text</span>
 					</div>
-					<pre class="overflow-x-auto rounded-xl border border-[var(--color-line)] bg-[var(--color-ink-2)] p-5 font-mono text-sm leading-7 text-[var(--color-fg)]"><code>{codeSample}</code></pre>
+					<pre class="overflow-x-auto rounded-xl border border-[var(--color-line)] bg-[var(--color-ink-2)] p-5 font-mono text-sm leading-7 text-[var(--color-fg)]"><code set:html={highlightedCode} /></pre>
 				</div>
 				<MusicPreview />
 			</section>
