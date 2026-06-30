@@ -1,0 +1,36 @@
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+:root {
+	--sl-font: "Space Grotesk", sans-serif;
+	--sl-font-mono: "IBM Plex Mono", monospace;
+
+	--sl-color-accent-low: #4a3a14;
+	--sl-color-accent: #f5b62e;
+	--sl-color-accent-high: #ffce5c;
+
+	--sl-color-white: #f4f4f3;
+	--sl-color-gray-1: #f4f4f3;
+	--sl-color-gray-2: #b6b6b2;
+	--sl-color-gray-3: #84847f;
+	--sl-color-gray-4: #5a5a56;
+	--sl-color-gray-5: #232326;
+	--sl-color-gray-6: #161619;
+	--sl-color-black: #0a0a0b;
+
+	--sl-color-bg: #0a0a0b;
+	--sl-color-bg-nav: #111113;
+	--sl-color-bg-sidebar: #111113;
+	--sl-color-bg-inline-code: #161619;
+	--sl-color-hairline-light: rgb(255 255 255 / 0.16);
+	--sl-color-hairline: rgb(255 255 255 / 0.08);
+	--sl-color-hairline-shade: #0a0a0b;
+}
+
+::selection {
+	background: rgba(245, 182, 46, 0.9);
+	color: #0a0a0b;
+}

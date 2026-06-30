@@ -1,0 +1,30 @@
+{
+	"name": "clave-dark",
+	"type": "dark",
+	"colors": {
+		"editor.background": "#161619",
+		"editor.foreground": "#f4f4f3"
+	},
+	"tokenColors": [
+		{
+			"scope": "comment.line.double-slash.clave",
+			"settings": { "foreground": "#84847f", "fontStyle": "italic" }
+		},
+		{
+			"scope": ["keyword.other.metadata.clave", "keyword.control.clave", "entity.name.tag.clave"],
+			"settings": { "foreground": "#f5b62e" }
+		},
+		{
+			"scope": ["punctuation.separator.clave", "punctuation.clave", "punctuation.definition.clave"],
+			"settings": { "foreground": "#84847f" }
+		},
+		{
+			"scope": "variable.other.constant.clave",
+			"settings": { "foreground": "#7dd3fc" }
+		},
+		{
+			"scope": "constant.numeric.clave",
+			"settings": { "foreground": "#c4b5fd" }
+		}
+	]
+}

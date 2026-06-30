@@ -1,0 +1,49 @@
+{
+	"name": "clave",
+	"scopeName": "source.clave",
+	"patterns": [
+		{ "include": "#comment" },
+		{ "include": "#metadata" },
+		{ "include": "#keyword" },
+		{ "include": "#directive" },
+		{ "include": "#chord-tuplet" },
+		{ "include": "#note" },
+		{ "include": "#punctuation" }
+	],
+	"repository": {
+		"comment": {
+			"match": "//.*$",
+			"name": "comment.line.double-slash.clave"
+		},
+		"metadata": {
+			"match": "^(\\s*)(title|composer|time|key|tempo)(:)",
+			"captures": {
+				"2": { "name": "keyword.other.metadata.clave" },
+				"3": { "name": "punctuation.separator.clave" }
+			}
+		},
+		"keyword": {
+			"match": "\\b(voice|staff|instrument|clef|end\\d+(,\\d+)*)\\b",
+			"name": "keyword.control.clave"
+		},
+		"directive": {
+			"match": "@[A-Za-z]+(:[^\\s|]+)?",
+			"name": "entity.name.tag.clave"
+		},
+		"chord-tuplet": {
+			"match": "[\\[\\]]",
+			"name": "punctuation.definition.clave"
+		},
+		"note": {
+			"match": "\\b([A-G](#{1,2}|b{1,2})?\\d)(/\\d+\\.{0,2})?",
+			"captures": {
+				"1": { "name": "variable.other.constant.clave" },
+				"3": { "name": "constant.numeric.clave" }
+			}
+		},
+		"punctuation": {
+			"match": "\\|\\]|\\|\\||:\\||\\|:|\\||~|\\^|_|'|\"",
+			"name": "punctuation.clave"
+		}
+	}
+}

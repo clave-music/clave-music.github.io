@@ -1,0 +1,26 @@
+---
+title: Clave
+description: A terse, unambiguous text language for writing musical scores.
+template: splash
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Clave is a text language for writing musical scores. It compiles to
+MusicXML, MEI, and MIDI.
+
+The grammar is built around one rule that removes the most common source of
+confusion in terse music DSLs:
+
+> **A number attached to a pitch letter is always the octave.
+> Duration is always written separately, after a slash.**
+
+`letter + number` answers *which note*. `/number` answers *how long*. The two
+never overlap, so `C4` is unambiguously "C in octave 4" and can never be read
+as "C quarter-note".
+
+<CardGrid stagger>
+	<LinkCard title="Getting Started" href="/docs/getting-started/" description="Install the CLI and compile your first .clave file." />
+	<LinkCard title="Language Reference" href="/docs/language/metadata/" description="The full Clave syntax, section by section." />
+	<LinkCard title="Examples" href="/docs/examples/" description="16 worked .clave scores covering every feature." />
+</CardGrid>
