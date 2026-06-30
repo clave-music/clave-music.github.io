@@ -47,30 +47,30 @@ const musicXml = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 </score-partwise>`;
 ---
 
-<section class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/80 p-5 shadow-[0_25px_120px_-40px_rgba(15,23,42,0.9)] backdrop-blur">
+<section class="rounded-2xl border border-[var(--color-line)] bg-[var(--color-panel)] p-5 shadow-[0_25px_80px_-50px_rgba(0,0,0,0.9)]">
 	<div class="mb-4 flex items-center justify-between gap-4">
 		<div>
-			<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-300/75">
+			<p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-fg-3)]">
 				Rendered preview
 			</p>
-			<p class="mt-1 text-sm text-slate-300">Powered by OpenSheetMusicDisplay</p>
+			<p class="mt-1 text-sm text-[var(--color-fg-2)]">Powered by OpenSheetMusicDisplay</p>
 		</div>
-		<div class="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-100">
+		<span class="rounded-full border border-[var(--color-amber)]/30 bg-[var(--color-amber)]/10 px-3 py-1 text-xs font-medium text-[var(--color-amber)]">
 			live render
-		</div>
+		</span>
 	</div>
 
 	<div
 		data-osmd-preview
-		class="min-h-[250px] overflow-x-auto rounded-2xl border border-white/10 bg-white/95 p-3 text-slate-900 shadow-inner"
+		class="min-h-[250px] overflow-x-auto rounded-xl border border-[var(--color-line)] bg-white p-3 text-slate-900 shadow-inner"
 	>
-		<div class="flex min-h-[250px] items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(248,250,252,0.98))] px-6 py-10 text-center text-sm text-slate-500">
+		<div class="flex min-h-[250px] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 px-6 py-10 text-center text-sm text-slate-500">
 			Loading score preview...
 		</div>
 	</div>
 
 	<noscript>
-		<p class="mt-4 text-sm text-slate-400">
+		<p class="mt-4 text-sm text-[var(--color-fg-3)]">
 			JavaScript is required to render the notation preview.
 		</p>
 	</noscript>
