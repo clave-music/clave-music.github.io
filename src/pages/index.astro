@@ -142,7 +142,7 @@ const highlightedCode = highlightClave(codeSample);
 			<section id="philosophy" class="mt-32 max-w-4xl">
 				<p class="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-amber)]">Philosophy</p>
 				<h2 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-[var(--color-fg)] sm:text-4xl">
-					Clave describes music, not engraving
+					Clave describes music, not engraving.
 				</h2>
 				<p class="mt-6 text-lg leading-8 text-[var(--color-fg-2)]">
 					Traditional notation files are XML: verbose, hard to write by hand, painful to
@@ -155,12 +155,15 @@ const highlightedCode = highlightClave(codeSample);
 
 			<!-- DSL example + live preview -->
 			<section class="mt-24 grid gap-6 lg:grid-cols-2">
-				<div class="rounded-2xl border border-[var(--color-line)] bg-[var(--color-panel)] p-5">
-					<div class="mb-4 flex items-center justify-between">
-						<p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-fg-3)]">DSL example</p>
+				<div class="flex flex-col rounded-2xl border border-[var(--color-line)] bg-[var(--color-panel)] p-5">
+					<div class="mb-4 flex items-center justify-between gap-4">
+						<div>
+							<p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-fg-3)]">DSL example</p>
+							<p class="mt-1 text-sm text-[var(--color-fg-2)]">Clave source for the score</p>
+						</div>
 						<span class="rounded-full border border-[var(--color-line-2)] px-3 py-1 text-xs text-[var(--color-fg-2)]">plain text</span>
 					</div>
-					<pre class="overflow-x-auto rounded-xl border border-[var(--color-line)] bg-[var(--color-ink-2)] p-5 font-mono text-sm leading-7 text-[var(--color-fg)]"><code set:html={highlightedCode} /></pre>
+					<pre class="flex-1 overflow-x-auto rounded-xl border border-[var(--color-line)] bg-[var(--color-ink-2)] p-5 font-mono text-sm leading-7 text-[var(--color-fg)]"><code set:html={highlightedCode} /></pre>
 				</div>
 				<MusicPreview />
 			</section>
