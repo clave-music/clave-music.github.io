@@ -18,7 +18,7 @@ export default defineConfig({
     starlight({
       title: 'Clave',
       logo: { src: './public/brand/clave-wordmark.svg', replacesTitle: true },
-      favicon: '/favicon-32.png',
+      favicon: '/favicon.svg',
       components: { Head: './src/components/Head.astro' },
       customCss: ['./src/styles/starlight.css'],
       expressiveCode: {
