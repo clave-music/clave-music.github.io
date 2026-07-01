@@ -6,8 +6,8 @@ description: Header key/value lines at the top of a Clave file.
 Key/value header lines at the top of the file, before any blocks:
 
 ```clave
-title: "My Song"
-composer: "My Name"
+title: My Song
+composer: My Name
 time: 3/4
 key: G major
 tempo: 96
