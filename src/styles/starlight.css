@@ -1,3 +1,13 @@
+starlight-theme-select { display: none; }
+
+html { scroll-behavior: smooth; }
+
+/* kill view transition animations on starlight doc pages only */
+[data-has-sidebar]::view-transition-old(root),
+[data-has-sidebar]::view-transition-new(root) {
+	animation: none;
+}
+
 @import "@fontsource/space-grotesk/400.css";
 @import "@fontsource/space-grotesk/500.css";
 @import "@fontsource/space-grotesk/700.css";
@@ -41,4 +51,18 @@
 
 .expressive-code .frame.is-terminal > figcaption.header::after {
 	border-bottom-color: var(--sl-color-hairline);
+}
+
+.starlight-aside--note {
+	background: var(--sl-color-gray-6);
+	border-left-color: var(--sl-color-accent);
+	color: var(--sl-color-gray-1);
+}
+
+.starlight-aside--note .starlight-aside__title {
+	color: var(--sl-color-accent);
+}
+
+.starlight-aside--note .starlight-aside__icon {
+	color: var(--sl-color-accent);
 }
