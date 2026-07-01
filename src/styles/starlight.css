@@ -18,9 +18,9 @@ html { scroll-behavior: smooth; }
 	--sl-font: "Space Grotesk", sans-serif;
 	--sl-font-mono: "IBM Plex Mono", monospace;
 
-	--sl-color-accent-low: #4a3a14;
-	--sl-color-accent: #f5b62e;
-	--sl-color-accent-high: #ffce5c;
+	--sl-color-accent-low: #493712;
+	--sl-color-accent: #c8940f;
+	--sl-color-accent-high: #f2b72a;
 
 	--sl-color-white: #f4f4f3;
 	--sl-color-gray-1: #f4f4f3;
@@ -41,7 +41,7 @@ html { scroll-behavior: smooth; }
 }
 
 ::selection {
-	background: rgba(245, 182, 46, 0.9);
+	background: rgba(242, 183, 42, 0.9);
 	color: #0a0a0b;
 }
 
