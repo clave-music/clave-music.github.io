@@ -1,0 +1,20 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+import ClientRouter from 'astro/components/ClientRouter.astro';
+---
+
+<Default {...Astro.props}><slot /></Default>
+<ClientRouter />
+<script>
+// Mark hash-only links with data-astro-reload so ClientRouter skips them
+function tagHashLinks() {
+  document.querySelectorAll('a[href*="#"]').forEach((a) => {
+    const url = new URL(a.href, location.href);
+    if (url.pathname === location.pathname && url.hash) {
+      a.dataset.astroReload = '';
+    }
+  });
+}
+tagHashLinks();
+document.addEventListener('astro:page-load', tagHashLinks);
+</script>

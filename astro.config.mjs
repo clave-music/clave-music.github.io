@@ -17,7 +17,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Clave',
+      logo: { src: './public/brand/clave-wordmark.svg', replacesTitle: true },
       favicon: '/favicon-32.png',
+      components: { Head: './src/components/Head.astro' },
       customCss: ['./src/styles/starlight.css'],
       expressiveCode: {
         themes: [claveTheme],
@@ -38,9 +40,9 @@ export default defineConfig({
           },
         },
       },
-      social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/clave-music' },
-      ],
+      // social: [
+      //   { icon: 'github', label: 'GitHub', href: 'https://github.com/clave-music' },
+      // ],
       editLink: {
         baseUrl: 'https://github.com/clave-music/clave-music.github.io/edit/main/',
       },
