@@ -10,6 +10,9 @@ const claveTheme = JSON.parse(readFileSync('./src/styles/clave-theme.json', 'utf
 
 // https://astro.build/config
 export default defineConfig({
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
       plugins: [tailwindcss()],
 	},
